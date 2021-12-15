@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Website: MyString
-  Name: MyString
-  City: MyString
-  Address: MyString
+  website: https://ethicalhackers.fr
+  short_name: EH
+  full_name: EthicalHackers
+  city: Paris
+  address: 112 rue de Bojean
 
 two:
-  Website: MyString
-  Name: MyString
-  City: MyString
-  Address: MyString
+  website: MyString
+  short_name: AAAA
+  full_name: AAAAAAAAAAA
+  city: MyString
+  address: MyString

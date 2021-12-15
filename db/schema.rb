@@ -10,27 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_155811) do
+ActiveRecord::Schema.define(version: 2021_12_15_215040) do
 
   create_table "companies", force: :cascade do |t|
-    t.string "Website"
-    t.string "Name"
-    t.string "City"
-    t.string "Address"
+    t.string "website"
+    t.string "short_name"
+    t.string "full_name"
+    t.string "city"
+    t.string "address"
+    t.integer "engagement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["engagement_id"], name: "index_companies_on_engagement_id"
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "FirstName"
-    t.string "LastName"
-    t.string "Title"
-    t.string "Phone"
-    t.integer "Company_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "title"
+    t.string "phone"
+    t.integer "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Company_id"], name: "index_contacts_on_Company_id"
+    t.index ["company_id"], name: "index_contacts_on_company_id"
   end
 
-  add_foreign_key "contacts", "Companies"
+  create_table "engagements", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "scoring"
+    t.string "language"
+    t.integer "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "companies", "engagements"
+  add_foreign_key "contacts", "companies"
 end

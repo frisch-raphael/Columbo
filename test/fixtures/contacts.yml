@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  FirstName: MyString
-  LastName: MyString
-  Title: MyString
-  Phone: MyString
-  Company: one
+  first_name: MyString
+  last_name: MyString
+  title: MyString
+  phone: MyString
+  company: one
 
 two:
-  FirstName: MyString
-  LastName: MyString
-  Title: MyString
-  Phone: MyString
-  Company: two
+  first_name: MyString
+  last_name: MyString
+  title: MyString
+  phone: MyString
+  company: two

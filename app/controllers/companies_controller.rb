@@ -5,12 +5,12 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.all
 
-    render json: @companies
+    render json: @companies, include: ['contacts']
   end
 
   # GET /companies/1
   def show
-    render json: @company
+    render json: @company, include: ['contacts']
   end
 
   # POST /companies
@@ -47,6 +47,6 @@ class CompaniesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def company_params
-    params.require(:Company).permit(:Website, :Name, :City, :Address)
+    params.require(:company).permit(:website, :short_name, :full_name, :city, :address)
   end
 end

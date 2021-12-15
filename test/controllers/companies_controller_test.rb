@@ -14,7 +14,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
 
     assert_difference('Company.count') do
       post companies_url,
-           params: { Company: { Address: @company.Address, City: @company.City, Name: @company.Name, Website: @company.Website } }, as: :json
+           params: { company: { address: @company.address, city: @company.city, short_name: @company.short_name, full_name: @company.full_name, website: @company.website } }, as: :json
     end
     assert_response 201
   end
@@ -26,7 +26,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update company' do
     patch company_url(@company),
-          params: { Company: { Address: @company.Address, City: @company.City, Name: @company.Name, Website: @company.Website } }, as: :json
+          params: { company: { address: @company.address, city: @company.city, short_name: @company.short_name, full_name: @company.full_name, website: @company.website } }, as: :json
     assert_response 200
   end
 

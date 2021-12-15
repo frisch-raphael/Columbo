@@ -1,5 +1,4 @@
 class Company < ApplicationRecord
-  has_many :contacts
-
-  validates :Name, presence: true
+  has_many :contacts, dependent: :destroy
+  # belongs_to :engagement
 end

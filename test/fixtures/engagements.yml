@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: External pentest
+  start_date: 2020-12-25
+  end_date: 2020-12-29
+  scoring: 1
+  language: french
+  state: 1
+
+two:
+  title: Internal pentest
+  start_date: 2021-11-15
+  end_date: 2021-11-17
+  scoring: 0
+  language: english
+  state: 0
