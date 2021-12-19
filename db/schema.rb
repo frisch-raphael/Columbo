@@ -13,15 +13,13 @@
 ActiveRecord::Schema.define(version: 2021_12_15_215040) do
 
   create_table "companies", force: :cascade do |t|
-    t.string "website"
-    t.string "short_name"
     t.string "full_name"
+    t.string "short_name"
     t.string "city"
     t.string "address"
-    t.integer "engagement_id", null: false
+    t.string "website"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["engagement_id"], name: "index_companies_on_engagement_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -42,10 +40,13 @@ ActiveRecord::Schema.define(version: 2021_12_15_215040) do
     t.integer "scoring"
     t.string "language"
     t.integer "state"
+    t.boolean "is_archived"
+    t.integer "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_engagements_on_company_id"
   end
 
-  add_foreign_key "companies", "engagements"
   add_foreign_key "contacts", "companies"
+  add_foreign_key "engagements", "companies"
 end

@@ -1,3 +1,4 @@
 class Engagement < ApplicationRecord
-  has_one :company
+  belongs_to :company, optional: true
+  validates :is_archived, presence: true
 end

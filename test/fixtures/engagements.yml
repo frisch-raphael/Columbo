@@ -7,6 +7,7 @@ one:
   scoring: 1
   language: french
   state: 1
+  company: one
 
 two:
   title: Internal pentest
@@ -15,3 +16,4 @@ two:
   scoring: 0
   language: english
   state: 0
+  company: two

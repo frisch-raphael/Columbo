@@ -7,12 +7,12 @@ class EngagementsController < ApplicationController
   def index
     @engagements = Engagement.all
 
-    render json: @engagements
+    render json: @engagements, include: ['company']
   end
 
   # GET /engagements/1
   def show
-    render json: @engagement
+    render json: @engagement, include: ['company']
   end
 
   # POST /engagements
@@ -49,6 +49,6 @@ class EngagementsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def engagement_params
-    params.require(:engagement).permit(:title, :start_date, :end_date, :scoring, :language, :state)
+    params.require(:engagement).permit(:title, :start_date, :end_date, :scoring, :language, :state, :is_archived)
   end
 end
