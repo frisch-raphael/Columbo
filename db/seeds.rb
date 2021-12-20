@@ -33,7 +33,7 @@ test_types = ["Internal intrusion", "Phishing assessment", "External penetration
   end
 end
 
-3.times do |report_index|
+5.times do |report_index|
   date_backward = rand(365)
   Engagement.create!(
     id: report_index,
@@ -43,7 +43,8 @@ end
     scoring: rand(2),
     state: rand(2),
     language: 'french',
-    company_id: rand(3)
+    company_id: rand(3),
+    is_archived: Faker::Boolean
   )
 end
 
