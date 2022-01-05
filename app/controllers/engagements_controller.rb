@@ -37,7 +37,7 @@ class EngagementsController < ApplicationController
 
   # DELETE /engagements/1
   def destroy
-    @engagement.destroy
+    @engagements = Engagement.where(id: params[:id].split(',')).destroy_all
   end
 
   private
@@ -49,6 +49,23 @@ class EngagementsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def engagement_params
-    params.require(:engagement).permit(:title, :start_date, :end_date, :scoring, :language, :state, :is_archived)
+    params.require(:engagement).permit(:title, :start_date, :end_date, :scoring, :language, :state)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

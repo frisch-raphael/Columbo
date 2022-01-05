@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2021_12_15_215040) do
     t.integer "scoring"
     t.string "language"
     t.integer "state"
-    t.boolean "is_archived"
     t.integer "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

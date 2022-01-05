@@ -4,39 +4,58 @@ require 'test_helper'
 
 class EngagementsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @engagement = create(:engagement, :with_company)
+    @built_engagement = build(:engagement)
+    @engagement_with_company = create(:engagement, :with_company)
   end
 
   test 'should get index with nested company' do
     get engagements_url, as: :json
-    assert_not_nil JSON.parse(@response.body)[0]['company'], 'Company not found in first engagement'
     assert_response :success
+    test = @response.body
+    assert_not_nil JSON.parse(@response.body)[0]['company'], 'Company not found in first engagement'
   end
 
   test 'should create engagement' do
     assert_difference('Engagement.count') do
+      post = { engagement: @built_engagement }
       post engagements_url,
-           params: { engagement: { end_date: @engagement.end_date, language: @engagement.language, scoring: @engagement.scoring, start_date: @engagement.start_date, state: @engagement.state, title: @engagement.title, is_archived: @engagement.is_archived } }, as: :json
+           params: { engagement: @built_engagement.as_json }, as: :json
     end
 
     assert_response 201
   end
 
   test 'should show engagement with company' do
-    get engagement_url(@engagement), as: :json
+    get engagement_url(@engagement_with_company), as: :json
     assert_response :success
     assert_not_nil JSON.parse(@response.body)['company']
   end
 
   test 'should update engagement' do
-    patch engagement_url(@engagement),
-          params: { engagement: { end_date: @engagement.end_date, language: @engagement.language, scoring: @engagement.scoring, start_date: @engagement.start_date, state: @engagement.state, title: @engagement.title, is_archived: @engagement.is_archived } }, as: :json
+    @built_engagement.id = @engagement_with_company.id
+    patch engagement_url(@engagement_with_company),
+          params: { engagement: @built_engagement.as_json }, as: :json
     assert_response 200
   end
 
   test 'should destroy engagement' do
     assert_difference('Engagement.count', -1) do
-      delete engagement_url(@engagement), as: :json
+      delete engagement_url(@engagement_with_company), as: :json
+    end
+
+    assert_response 204
+
+    assert_raise ActiveRecord::RecordNotFound do
+      get engagement_url(@engagement_with_company), as: :json
+    end
+  end
+
+  test 'should destroy multiple' do
+    engagements = FactoryBot.create_list(:engagement, 5)
+    engagement_ids = engagements.map(&:id)
+    test = engagements_url(id: engagement_ids.join(','))
+    assert_difference('Engagement.count', -5) do
+      delete engagement_url(engagement_ids.join(',')), as: :json
     end
 
     assert_response 204

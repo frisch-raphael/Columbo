@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :engagements
+  resources :engagements do
+    collection do
+      delete 'destroy_multiple'
+    end
+  end
   resources :companies do
     resources :contacts
   end

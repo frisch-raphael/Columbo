@@ -7,7 +7,6 @@ class CreateEngagements < ActiveRecord::Migration[6.1]
       t.integer :scoring
       t.string :language
       t.integer :state
-      t.boolean :is_archived
       t.references :company, null: true, foreign_key: true
 
       t.timestamps
