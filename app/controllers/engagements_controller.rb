@@ -49,7 +49,7 @@ class EngagementsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def engagement_params
-    params.require(:engagement).permit(:title, :start_date, :end_date, :scoring, :language, :state)
+    params.require(:engagement).permit(:title, :assessment_type, :start_date, :end_date, :scoring, :language, :state)
   end
 end
 

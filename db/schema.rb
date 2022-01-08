@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_215040) do
 
   create_table "engagements", force: :cascade do |t|
     t.string "title"
+    t.string "assessment_type"
     t.date "start_date"
     t.date "end_date"
     t.integer "scoring"

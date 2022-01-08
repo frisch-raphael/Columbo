@@ -5,8 +5,9 @@ FactoryBot.define do
   date_backward = rand(365)
 
   factory :engagement do
-    title { test_types[rand(3)] }
+    title { 'Contoso - ' + test_types[rand(3)] }
     state { rand(2) }
+    assessment_type { test_types[rand(3)] }
     trait :with_optionals do
 
       start_date { Faker::Date.backward(days: date_backward) }
