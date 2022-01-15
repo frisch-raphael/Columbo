@@ -16,7 +16,7 @@ FactoryBot.define do
       language { 'french' }
     end
     trait :with_company do
-      company
+      association :company, :with_optionals
     end
   end
 end

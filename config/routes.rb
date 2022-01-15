@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       delete 'destroy_multiple'
     end
   end
+  post '/engagements/:id/companies', to: 'companies#engagement_create'
+
   resources :companies do
     resources :contacts
   end

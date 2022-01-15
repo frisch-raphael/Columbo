@@ -1,10 +1,9 @@
 FactoryBot.define do
-  business_name = Faker::Company.name
   factory :company do
-    full_name { business_name }
+    full_name { Faker::Company.name }
 
     trait :with_optionals do
-      short_name { business_name[0..2] }
+      short_name { Faker::Company.name[0..2] }
       website { Faker::Internet.url }
       city { Faker::Address.city }
       address { Faker::Address.full_address }
@@ -22,15 +21,17 @@ FactoryBot.define do
       end
     end
 
-    factory :company_with_engagements do
-      transient do
-        engagements_count { 5 }
-      end
-
-      engagements do
-        Array.new(engagements_count) { association(:engagement, :with_company) }
-      end
+    factory :company_with_engagement do
+      association :engagement
+      # transient do
+      #   engagements_count { 5 }
+      # end
+      #
+      # engagements do
+      #   Array.new(engagements_count) { association(:engagement, :with_company) }
+      # end
     end
+
   end
 end
 

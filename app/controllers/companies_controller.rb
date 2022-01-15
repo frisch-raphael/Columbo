@@ -38,6 +38,18 @@ class CompaniesController < ApplicationController
     @company.destroy
   end
 
+  # POST /engagements/1/companies
+  def engagement_create
+    @engagement = Engagement.find(params[:id])
+    @engagement.company&.destroy
+    @engagement.company = Company.new(company_params)
+    if @engagement.company.save
+      render json: @engagement.company, status: :created, location: @engagement.company
+    else
+      render json: @engagement.company.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -4,6 +4,7 @@ require 'test_helper'
 
 class EngagementsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    Engagement.destroy_all
     @built_engagement = build(:engagement)
     @engagement_with_company = create(:engagement, :with_company)
   end
@@ -11,13 +12,12 @@ class EngagementsControllerTest < ActionDispatch::IntegrationTest
   test 'should get index with nested company' do
     get engagements_url, as: :json
     assert_response :success
-    test = @response.body
+    test = JSON.parse(@response.body)[0]
     assert_not_nil JSON.parse(@response.body)[0]['company'], 'Company not found in first engagement'
   end
 
   test 'should create engagement' do
     assert_difference('Engagement.count') do
-      post = { engagement: @built_engagement }
       post engagements_url,
            params: { engagement: @built_engagement.as_json }, as: :json
     end

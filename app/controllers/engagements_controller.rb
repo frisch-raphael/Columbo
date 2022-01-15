@@ -18,7 +18,6 @@ class EngagementsController < ApplicationController
   # POST /engagements
   def create
     @engagement = Engagement.new(engagement_params)
-
     if @engagement.save
       render json: @engagement, status: :created, location: @engagement
     else
