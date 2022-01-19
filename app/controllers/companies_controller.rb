@@ -5,24 +5,24 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.all
 
-    render json: @companies, include: ['contacts']
+    render json: @companies
   end
 
   # GET /companies/1
   def show
-    render json: @company, include: ['contacts']
+    render json: @company
   end
 
   # POST /companies
-  def create
-    @company = Company.new(company_params)
-
-    if @company.save
-      render json: @company, status: :created, location: @company
-    else
-      render json: @company.errors, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   @company = Company.new(company_params)
+  #
+  #   if @company.save
+  #     render json: @company, status: :created, location: @company
+  #   else
+  #     render json: @company.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /companies/1
   def update
@@ -44,7 +44,19 @@ class CompaniesController < ApplicationController
     @engagement.company&.destroy
     @engagement.company = Company.new(company_params)
     if @engagement.company.save
-      render json: @engagement.company, status: :created, location: @engagement.company
+      render json: @engagement.company, status: :created,
+             location: "#{engagement_url}#{params[:id]}/companies/#{@engagement.company.id}"
+    else
+      render json: @engagement.company.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PUT /engagements/1/companies/1
+  def engagement_update
+    @engagement = Engagement.find(params[:id])
+    @engagement.company.update(company_params)
+    if @engagement.company.save
+      render json: @engagement.company
     else
       render json: @engagement.company.errors, status: :unprocessable_entity
     end

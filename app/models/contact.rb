@@ -1,6 +1,5 @@
 class Contact < ApplicationRecord
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :company, presence: true
-  belongs_to :company
+  validates :last_name, presence: true, allow_blank: false
+  validates :first_name, presence: true, allow_blank: false
+  belongs_to :engagement
 end

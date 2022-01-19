@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 2021_12_15_215040) do
     t.string "city"
     t.string "address"
     t.string "website"
+    t.integer "engagement_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["engagement_id"], name: "index_companies_on_engagement_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -27,10 +29,10 @@ ActiveRecord::Schema.define(version: 2021_12_15_215040) do
     t.string "last_name"
     t.string "title"
     t.string "phone"
-    t.integer "company_id", null: false
+    t.integer "engagement_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_contacts_on_company_id"
+    t.index ["engagement_id"], name: "index_contacts_on_engagement_id"
   end
 
   create_table "engagements", force: :cascade do |t|
@@ -47,6 +49,5 @@ ActiveRecord::Schema.define(version: 2021_12_15_215040) do
     t.index ["company_id"], name: "index_engagements_on_company_id"
   end
 
-  add_foreign_key "contacts", "companies"
   add_foreign_key "engagements", "companies"
 end

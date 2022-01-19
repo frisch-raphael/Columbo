@@ -7,12 +7,12 @@ class EngagementsController < ApplicationController
   def index
     @engagements = Engagement.all
 
-    render json: @engagements, include: ['company']
+    render json: @engagements, include: %w[company contacts]
   end
 
   # GET /engagements/1
   def show
-    render json: @engagement, include: ['company']
+    render json: @engagement, include: %w[company contacts]
   end
 
   # POST /engagements

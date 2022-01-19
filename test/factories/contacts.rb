@@ -6,6 +6,6 @@ FactoryBot.define do
       phone { Faker::PhoneNumber }
       title { Faker::Job.title }
     end
-    company
+    engagement
   end
 end

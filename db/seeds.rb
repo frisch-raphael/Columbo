@@ -7,13 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'factory_bot_rails'
 
-Company.destroy_all
 Engagement.destroy_all
+# Contact.destroy_all
+# Company.destroy_all
 
-3.times do
-
-  FactoryBot.create(:engagement, :with_optionals, :with_company)
-end
+# 3.times do
+@engagement_with_company = FactoryBot.create(:engagement, :with_company)
+# FactoryBot.create(:engagement)
+# FactoryBot.create(:engagement)
+# FactoryBot.create_list(:nested_engagement, 3, :with_optionals)
+# end
 
 
 

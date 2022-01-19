@@ -6,6 +6,7 @@ class CreateCompanies < ActiveRecord::Migration[6.1]
       t.string :city
       t.string :address
       t.string :website
+      t.belongs_to :engagement
 
       t.timestamps
     end

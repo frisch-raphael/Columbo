@@ -10,27 +10,17 @@ FactoryBot.define do
       # posts_count is declared as a transient attribute available in the
       # callback via the evaluator
     end
+    association :engagement
 
-    factory :company_with_contacts do
-      transient do
-        contacts_count { 5 }
-      end
-
-      contacts do
-        Array.new(contacts_count) { association(:contact) }
-      end
-    end
-
-    factory :company_with_engagement do
-      association :engagement
-      # transient do
-      #   engagements_count { 5 }
-      # end
-      #
-      # engagements do
-      #   Array.new(engagements_count) { association(:engagement, :with_company) }
-      # end
-    end
+    # factory :company_with_engagement do
+    # transient do
+    #   engagements_count { 5 }
+    # end
+    #
+    # engagements do
+    #   Array.new(engagements_count) { association(:engagement, :with_company) }
+    # end
+    # end
 
   end
 end
