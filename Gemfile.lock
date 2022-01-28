@@ -93,6 +93,7 @@ GEM
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     io-wait (0.2.1)
+    iso_country_codes (0.7.8)
     logger (1.5.0)
     loofah (2.13.0)
       crass (~> 1.0.2)
@@ -103,6 +104,9 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
+    mobility (1.2.5)
+      i18n (>= 0.6.10, < 2)
+      request_store (~> 1.0)
     msgpack (1.4.2)
     net-imap (0.2.3)
       digest
@@ -151,6 +155,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails_param (1.3.0)
+      actionpack (>= 3.2.0)
+      activesupport (>= 3.2.0)
     railties (7.0.1)
       actionpack (= 7.0.1)
       activesupport (= 7.0.1)
@@ -163,6 +170,8 @@ GEM
     rbs_rails (0.9.0)
       parser
       rbs (>= 1)
+    request_store (1.5.1)
+      rack (>= 1.4)
     sqlite3 (1.4.2)
     strscan (3.0.1)
     thor (1.2.1)
@@ -185,10 +194,13 @@ DEPENDENCIES
   database_cleaner
   factory_bot_rails
   faker
+  iso_country_codes
   logger
+  mobility (~> 1.2.5)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.1, >= 7.0.1)
+  rails_param
   rbs_rails
   sqlite3 (~> 1.4)
   tzinfo-data
@@ -197,4 +209,4 @@ RUBY VERSION
    ruby 3.1.0p0
 
 BUNDLED WITH
-   2.3.4
+   2.3.5

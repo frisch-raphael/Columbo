@@ -38,8 +38,10 @@ end
 group :development do
 end
 
+gem 'logger'
+gem 'iso_country_codes'
+gem 'mobility', '~> 1.2.5'
+gem 'rails_param'
+gem 'rbs_rails', require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
-
-gem 'logger'
-gem 'rbs_rails', require: false

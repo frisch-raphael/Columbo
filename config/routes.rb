@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :template_findings
   resources :engagements do
     collection do
       delete 'destroy_multiple'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   put '/engagements/:id/contacts/:contact_id', to: 'contacts#engagement_update'
   delete '/engagements/:id/contacts/:contact_id', to: 'contacts#engagement_destroy'
   get '/engagements/:id/contacts', to: 'contacts#engagement_index'
+  get '/config', to: 'columbo_config#index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -7,13 +7,11 @@ class EngagementsControllerTest < ActionDispatch::IntegrationTest
     Engagement.destroy_all
     @built_engagement = build(:engagement)
     @nested_engagement = create(:nested_engagement, :with_optionals)
-    test = @nested_engagement
   end
 
   test 'should get index with nested company' do
     get engagements_url, as: :json
     assert_response :success
-    test = JSON.parse(@response.body)[0]
     assert_not_nil JSON.parse(@response.body)[0]['company'], 'Company not found in first engagement'
   end
 

@@ -2,14 +2,14 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i[show update destroy]
   before_action :set_engagement
 
-  # GET /engagements
+  # GET /engagements/1/contacts
   def engagement_index
     @contacts = @engagement.contacts
 
     render json: @contacts
   end
 
-  # POST /engagements/1/companies
+  # POST /engagements/1/contacts
   def engagement_create
     contact = @engagement.contacts.new(contact_params)
 
@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
     end
   end
 
-  # PUT /engagements/1/companies/1
+  # PUT /engagements/1/contacts/1
   def engagement_update
     contact = Contact.find(params[:contact_id])
 
@@ -33,7 +33,6 @@ class ContactsController < ApplicationController
 
   def engagement_destroy
     @contacts = Contact.where(id: params[:contact_id].split(',')).destroy_all
-    puts @contacts
   end
 
   private

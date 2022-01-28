@@ -20,6 +20,8 @@ Bundler.require(*Rails.groups)
 
 module Columbo2
   class Application < Rails::Application
+    # Columbo configuration
+    config.columbo = config_for(:columbo)
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
