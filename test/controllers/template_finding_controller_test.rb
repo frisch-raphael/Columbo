@@ -16,7 +16,6 @@ class TemplateFindingsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create template_finding' do
     assert_difference('TemplateFinding.count') do
-      pp @built_template_finding.as_json
       post template_findings_url,
            params: @built_template_finding.as_json, as: :json
     end

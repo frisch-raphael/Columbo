@@ -5,9 +5,9 @@ class CreateEngagements < ActiveRecord::Migration[6.1]
       t.string :assessment_type
       t.date :start_date
       t.date :end_date
-      t.integer :scoring
+      t.string :scoring
       t.string :language
-      t.integer :state
+      t.string :state
       t.references :company, null: true, foreign_key: true
 
       t.timestamps

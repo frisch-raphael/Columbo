@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 2022_01_25_224305) do
     t.string "assessment_type"
     t.date "start_date"
     t.date "end_date"
-    t.integer "scoring"
+    t.string "scoring"
     t.string "language"
-    t.integer "state"
+    t.string "state"
     t.integer "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(version: 2022_01_25_224305) do
   create_table "template_findings", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "assessment_type"
-    t.integer "finding_type"
-    t.integer "hacker_profile"
-    t.integer "remediation_effort"
+    t.string "assessment_type"
+    t.string "finding_type"
+    t.string "hacker_profile"
+    t.string "remediation_effort"
     t.string "remediation_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

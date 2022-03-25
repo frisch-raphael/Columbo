@@ -7,7 +7,7 @@ FactoryBot.define do
     title { Faker::Lorem.sentence }
     trait :with_optionals do
       description { Faker::Lorem.paragraph }
-      assessment_type { ColumboConfig.all_entries_for(:assessment_types)[rand(4)] }
+      assessment_type { ColumboConfig.array_all_entries_for(:assessment_types)[rand(4)] }
       remediation_description { Faker::Lorem.paragraph }
     end
   end

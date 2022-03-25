@@ -17,7 +17,6 @@ class TemplateFindingsController < ApplicationController
 
   # POST /template_findings
   def create
-    param! 'title', String, required: true
     @template_finding = TemplateFinding.new(template_finding_params)
     if @template_finding.save
       render json: @template_finding, status: :created, location: @template_finding

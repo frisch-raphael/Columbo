@@ -11,8 +11,10 @@ Engagement.destroy_all
 # Contact.destroy_all
 # Company.destroy_all
 
-# 3.times do
-@engagement_with_company = FactoryBot.create(:engagement, :with_company)
+3.times do
+  FactoryBot.create(:engagement, :with_company)
+  FactoryBot.create(:template_finding)
+end
 # FactoryBot.create(:engagement)
 # FactoryBot.create(:engagement)
 # FactoryBot.create_list(:nested_engagement, 3, :with_optionals)
